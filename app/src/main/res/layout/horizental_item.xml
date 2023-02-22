@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_140sdp"
+    android:layout_margin="@dimen/_8sdp"
+    app:cardCornerRadius="@dimen/_20sdp"
+    app:strokeWidth="@dimen/_1sdp"
+    app:strokeColor="@color/teal_700"
+    app:cardElevation="@dimen/_14sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_3sdp">
+
+        <ImageView
+            android:id="@+id/meal_img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/meal_title"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/dessert"
+            tools:src="@drawable/eggs_and_toast" />
+
+        <TextView
+            android:id="@+id/meal_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_16ssp"
+            android:gravity="center"
+            app:layout_constraintBottom_toTopOf="@id/divider"
+            app:layout_constraintEnd_toStartOf="@id/meal_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Egg and Toast" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            app:dividerThickness="@dimen/_1sdp"
+            app:dividerColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/meal_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/meal_img"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textSize="@dimen/_13ssp"
+            android:paddingStart="@dimen/_4sdp"
+            app:layout_constraintBottom_toTopOf="@id/estimated_time_value"
+            app:layout_constraintEnd_toStartOf="@id/meal_img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
+            tools:text="Egg and Toast ddfdfggfdgdfgffdgfgfdgdfdfgdfgdfgfgfdgdfgsdfsdfsdfnsd" />
+
+        <TextView
+            android:id="@+id/estimated_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toTopOf="@id/price"
+            app:layout_constraintEnd_toStartOf="@id/estimated_time_value"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            android:text="Time : " />
+        <TextView
+            android:id="@+id/estimated_time_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintTop_toBottomOf="@id/description"
+            app:layout_constraintBottom_toTopOf="@+id/price_value"
+            app:layout_constraintEnd_toStartOf="@id/addToFav_fab"
+            app:layout_constraintStart_toEndOf="@id/estimated_time"
+            tools:text="20 $" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/price_value"
+            app:layout_constraintTop_toBottomOf="@id/estimated_time"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Price : " />
+        <TextView
+            android:id="@+id/price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/addToFav_fab"
+            app:layout_constraintTop_toBottomOf="@id/estimated_time_value"
+            app:layout_constraintStart_toEndOf="@id/price"
+            tools:text="12 $" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addToFav_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/favourite"
+            android:tintMode="multiply"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/meal_img"
+            app:layout_constraintTop_toBottomOf="@id/description"
+             />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
