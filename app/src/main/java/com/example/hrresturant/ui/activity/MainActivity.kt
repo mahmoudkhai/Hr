@@ -3,8 +3,10 @@ package com.example.hrresturant.ui.activity
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -14,13 +16,19 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.hrresturant.R
 import com.example.hrresturant.databinding.ActivityMainBinding
+import com.example.hrresturant.ui.base.BaseViewModel
+import com.example.hrresturant.ui.util.UiState
+import dagger.hilt.android.AndroidEntryPoint
 
 const val TAG = "MainActivity"
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var areViewsShown = true
+    private val mainActivityViewModel: MainActivityViewModel by viewModels()
+    var areViewsShown = true
     private lateinit var toggle: ActionBarDrawerToggle
     private var darkMode = false
     private lateinit var sharedPreferences: SharedPreferences
@@ -36,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+        mainActivityViewModel
         toggle = ActionBarDrawerToggle(
             this,
             binding.drawerlayout,
@@ -55,10 +64,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
 //            navController.graph
             setOf(
-                R.id.lunchFragment,
-                R.id.breakfastFragment,
-                R.id.drinksFragment,
-                R.id.sweetsFragment
+                R.id.homeFragment,
+                R.id.favouriteFragment,
             ), binding.drawerlayout
         )
         // drawer layout to change Burger icon into a back button
@@ -120,7 +127,57 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
+        mainActivityViewModel._status.observe(this) { isRoomEmpty ->
+            Log.d("Repository", "is Room Empty ?: $isRoomEmpty")
+            if (!isRoomEmpty.isNullOrEmpty()) {
+                showSearch()
+                showFragmentContainerView()
+            } else {
+                mainActivityViewModel.status
+                hideFragmentContainerView()
+                hideSearch()
+            }
 
+        }
+        mainActivityViewModel.status.observe(this) { networkResponse ->
+            when (networkResponse) {
+                is UiState.Error -> {
+                    hideLoading()
+                    hideFragmentContainerView()
+                    hideSearch()
+                    showErrorLayout()
+                }
+                UiState.Loading -> {
+                    Log.d("Repository", "Loading ............")
+                    hideErrorLayout()
+                    hideSearch()
+                    hideFragmentContainerView()
+                    showLoading()
+                }
+                is UiState.Success -> {
+                    showSearch()
+                    showFragmentContainerView()
+                }
+                UiState.Success -> {
+                    Log.d("Repository", "Successful  ............")
+                    showSearch()
+                    showFragmentContainerView()
+                }
+            }
+        }
+    }
+
+    private fun showSearch() {
+        binding.searchTe.visibility = View.VISIBLE
+        binding.darkMode.visibility = View.VISIBLE
+        binding.lightMode.visibility = View.VISIBLE
+
+    }
+
+    private fun hideSearch() {
+        binding.searchTe.visibility = View.INVISIBLE
+        binding.darkMode.visibility = View.INVISIBLE
+        binding.lightMode.visibility = View.INVISIBLE
     }
 
 
@@ -129,12 +186,12 @@ class MainActivity : AppCompatActivity() {
     true if Up navigation completed successfully and this Activity was finished, false otherwise
      */
     override fun onSupportNavigateUp(): Boolean {
-        if (!areViewsShown) showViews()
+        showViews()
         return navController.navigateUp(appBarConfiguration)
     }
 
     override fun onBackPressed() {
-        if (!areViewsShown) showViews()
+        showViews()
         if (binding.drawerlayout.isOpen) {
             binding.drawerlayout.close()
         } else
@@ -168,6 +225,33 @@ class MainActivity : AppCompatActivity() {
         }
         areViewsShown = true
     }
+
+    private fun showLoading() {
+        binding.loadingLayout.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideErrorLayout() {
+        binding.errorLayout.errorImg.visibility = View.GONE
+        binding.errorLayout.errorText.visibility = View.GONE
+    }
+
+    private fun showErrorLayout() {
+        binding.errorLayout.errorImg.visibility = View.VISIBLE
+        binding.errorLayout.errorText.visibility = View.VISIBLE
+    }
+
+    private fun hideLoading() {
+        binding.loadingLayout.progressBar.visibility = View.GONE
+    }
+
+    private fun hideFragmentContainerView() {
+        binding.fragmentContainerView.visibility = View.INVISIBLE
+    }
+
+    private fun showFragmentContainerView() {
+        binding.fragmentContainerView.visibility = View.VISIBLE
+    }
+
 
     private fun setUpNavigationMenu(navController: NavController) =
         binding.navigationView.setupWithNavController(navController)

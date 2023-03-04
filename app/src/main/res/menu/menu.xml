@@ -2,33 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--    <item-->
-<!--        android:id="@+id/homeFragment"-->
-<!--        android:icon="@drawable/house_home"-->
-<!--        android:title="Home" />-->
     <item
-        android:id="@+id/lunchFragment"
-        android:title="Lunch"
-        android:iconTint="@color/white" />
-    <item
-        android:id="@+id/breakfastFragment"
-        android:title="Breakfasr"
-        android:iconTint="@color/black"
-        android:icon="@drawable/eggs_and_toast"/>
-    <item
-        android:id="@+id/drinksFragment"
-        android:icon="@drawable/drinks"
-        android:title="Drinks" />
-    <item
-        android:id="@+id/sweetsFragment"
-        android:title="Desserts"
-        app:iconTint="@color/white"
-        android:icon="@drawable/dessert"/>
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home" />
 
-<!--    <item-->
-<!--        android:id="@+id/favouriteFragment"-->
-<!--        android:icon="@drawable/favourite"-->
-<!--        android:title="Favourite" />-->
+
+    <item
+        android:id="@+id/favouriteFragment"
+        android:icon="@drawable/favourite"
+        android:title="Favourite" />
 <!--    <item-->
 <!--        android:id="@+id/userProfileFragment"-->
 <!--        android:icon="@drawable/profile_user"-->

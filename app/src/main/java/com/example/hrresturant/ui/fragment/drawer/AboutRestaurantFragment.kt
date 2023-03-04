@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import com.example.hrresturant.databinding.FragmentAboutRestaurantBinding
 import com.example.hrresturant.ui.adapter.SliderAdapter
-import com.example.hrresturant.ui.fragment.BaseFragment
+import com.example.hrresturant.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutRestaurantFragment :
     BaseFragment<FragmentAboutRestaurantBinding>(FragmentAboutRestaurantBinding::inflate) {
 

@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.hrresturant.R
 import com.example.hrresturant.databinding.FragmentLocationBinding
-import com.example.hrresturant.ui.fragment.BaseFragment
+import com.example.hrresturant.ui.base.BaseFragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -17,9 +17,10 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import dagger.hilt.android.AndroidEntryPoint
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
-
+@AndroidEntryPoint
 class LocationFragment : BaseFragment<FragmentLocationBinding>(FragmentLocationBinding::inflate),
     EasyPermissions.PermissionCallbacks {
     private lateinit var currentLocation: Location

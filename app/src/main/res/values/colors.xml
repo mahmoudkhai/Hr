@@ -9,6 +9,7 @@
     <color name="yellow">#FFEB3B</color>
     <color name="yellow_white">#BFB988</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#E40C0C</color>
     <color name="textColor">#356859</color>
     <color name="background">#FFFBE6</color>
 </resources>
