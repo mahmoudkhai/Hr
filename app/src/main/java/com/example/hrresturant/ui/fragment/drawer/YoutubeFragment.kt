@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.view.View
 import com.example.hrresturant.databinding.FragmentYoutubeBinding
 import com.example.hrresturant.ui.fragment.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class YoutubeFragment : BaseFragment<FragmentYoutubeBinding>(FragmentYoutubeBinding::inflate) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

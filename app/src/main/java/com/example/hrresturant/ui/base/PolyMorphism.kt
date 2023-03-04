@@ -1,4 +1,4 @@
-package com.example.hrresturant.ui.adapter.base
+package com.example.hrresturant.ui.base
 
 import androidx.recyclerview.widget.RecyclerView.Adapter
 

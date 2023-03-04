@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:backgroundTint="@color/background"
-    tools:context=".ui.fragment.bottomNav.breakfast.BreakfastFragment">
+    tools:context=".ui.fragment.bottomNav.home.breakfast.BreakfastFragment">
 
+    <include
+        android:id="@+id/error"
+        layout="@layout/error_layout"
+        android:visibility="gone"/>
+    <include
+        android:id="@+id/loading"
+        layout="@layout/loading_layout"
+        android:visibility="gone"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:tabGravity="center"
+        app:tabInlineLabel="true"
         app:tabIndicatorHeight="0dp"
         android:elevation="@dimen/_8sdp"
         app:tabRippleColor="@null"

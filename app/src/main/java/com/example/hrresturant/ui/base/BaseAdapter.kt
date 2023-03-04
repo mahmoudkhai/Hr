@@ -1,4 +1,4 @@
-package com.example.hrresturant.ui.adapter.base
+package com.example.hrresturant.ui.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

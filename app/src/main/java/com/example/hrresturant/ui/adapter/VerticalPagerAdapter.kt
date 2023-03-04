@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hrresturant.databinding.VerticalViewPagerItemBinding
-import com.example.hrresturant.ui.adapter.base.PolyMorphism
+import com.example.hrresturant.ui.base.PolyMorphism
 
 class VerticalPagerAdapter (private val recyclarViews : List<PolyMorphism>):
     RecyclerView.Adapter<VerticalPagerAdapter.ViewPagerViewHolder>(){

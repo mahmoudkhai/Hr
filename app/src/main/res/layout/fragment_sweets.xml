@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:backgroundTint="@color/background"
-    tools:context=".ui.fragment.bottomNav.sweets.SweetsFragment">
+    tools:context=".ui.fragment.bottomNav.home.sweets.SweetsFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

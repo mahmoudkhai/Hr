@@ -83,7 +83,7 @@
             android:textSize="@dimen/_13ssp"
             app:layout_constraintTop_toBottomOf="@id/description"
             app:layout_constraintBottom_toTopOf="@+id/price_value"
-            app:layout_constraintEnd_toStartOf="@id/addToFav_fab"
+            app:layout_constraintEnd_toStartOf="@id/fav_checkBox"
             app:layout_constraintStart_toEndOf="@id/estimated_time"
             tools:text="20 $" />
 
@@ -104,22 +104,22 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/addToFav_fab"
+            app:layout_constraintEnd_toStartOf="@+id/fav_checkBox"
             app:layout_constraintTop_toBottomOf="@id/estimated_time_value"
             app:layout_constraintStart_toEndOf="@id/price"
             tools:text="12 $" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addToFav_fab"
+        <CheckBox
+            android:id="@+id/fav_checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:src="@drawable/favourite"
-            android:tintMode="multiply"
+            android:button="@drawable/selector_wishlist_item"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/meal_img"
-            app:layout_constraintTop_toBottomOf="@id/description"
-             />
+            app:layout_constraintTop_toBottomOf="@id/estimated_time_value" />
+<!--            app:useMaterialThemeColor="false"-->
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

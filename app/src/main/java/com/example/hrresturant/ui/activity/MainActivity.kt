@@ -5,22 +5,29 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.*
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import com.example.hrresturant.R
 import com.example.hrresturant.databinding.ActivityMainBinding
+import com.example.hrresturant.ui.base.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 const val TAG = "MainActivity"
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var areViewsShown = true
+    private val baseViewModel: BaseViewModel by viewModels()
+    var areViewsShown = true
     private lateinit var toggle: ActionBarDrawerToggle
     private var darkMode = false
     private lateinit var sharedPreferences: SharedPreferences
@@ -31,6 +38,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+        baseViewModel.fetchData()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val navHostFragment =
@@ -55,10 +63,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
 //            navController.graph
             setOf(
-                R.id.lunchFragment,
-                R.id.breakfastFragment,
-                R.id.drinksFragment,
-                R.id.sweetsFragment
+                R.id.homeFragment,
+                R.id.favouriteFragment,
             ), binding.drawerlayout
         )
         // drawer layout to change Burger icon into a back button
@@ -129,12 +135,12 @@ class MainActivity : AppCompatActivity() {
     true if Up navigation completed successfully and this Activity was finished, false otherwise
      */
     override fun onSupportNavigateUp(): Boolean {
-        if (!areViewsShown) showViews()
+        showViews()
         return navController.navigateUp(appBarConfiguration)
     }
 
     override fun onBackPressed() {
-        if (!areViewsShown) showViews()
+        showViews()
         if (binding.drawerlayout.isOpen) {
             binding.drawerlayout.close()
         } else

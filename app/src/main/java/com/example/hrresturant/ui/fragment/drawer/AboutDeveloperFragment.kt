@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.example.hrresturant.R
 import com.example.hrresturant.databinding.FragmentAboutDeveloperBinding
 import com.example.hrresturant.ui.fragment.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AboutDeveloperFragment :
     BaseFragment<FragmentAboutDeveloperBinding>(FragmentAboutDeveloperBinding::inflate){
 
