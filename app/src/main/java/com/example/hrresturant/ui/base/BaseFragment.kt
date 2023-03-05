@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.viewbinding.ViewBinding
+import com.example.hrresturant.ui.adapter.ItemListener
+import com.example.hrresturant.ui.base.BaseViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 abstract class BaseFragment<VB : ViewBinding>(
     private val bindingInflater: (inflater: LayoutInflater, container: ViewGroup?, boolean: Boolean) -> VB
